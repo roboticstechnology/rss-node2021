@@ -7,7 +7,6 @@ const getAll = async () => userLists;
 const creat = async user => {
   const usr = new User(user);
   userLists.push(usr);
-  console.log(userLists)
   return usr;
 };
 
@@ -22,7 +21,6 @@ const updateUser = (id, updData) => {
 const deleteUser = id => {
   const deletedUserIndex = userLists.findIndex(user => user.id === id);
   const deletedUser = userLists.splice(deletedUserIndex, 1);
-  console.log(deletedUser)
   return deletedUser;
 };
 

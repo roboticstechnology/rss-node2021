@@ -4,7 +4,10 @@ const boardLists = [];
 
 const getAll = async () => boardLists;
 
-const getBoardById = async id => boardLists.find(board => board.id === id);
+const getBoardById = async id =>{
+  console.log(boardLists)
+  return boardLists.find(board => board.id === id);
+} 
 
 const createBoard = async boardData => {
   const newBoard = new Board(boardData);

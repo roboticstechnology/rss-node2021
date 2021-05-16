@@ -4,12 +4,12 @@ const Board = require('./board.model');
 
 router.route('/').get(async (req, res) => {
   const boards = await boardsService.getAll();
-  res.json(boards.map(Board.toResponse));
+  res.status(200).json(boards.map(Board.toResponse));
 });
 
 router.route('/:id').get(async (req, res) => {
   const board = await boardsService.getBoardById(req.params.id);
-  if (board) res.json(board);
+  if (board) res.json(Board.toResponse(board));
   else res.status(404).send('Board not found');
 });
 
@@ -25,7 +25,7 @@ router.route('/:id').put(async (req, res) => {
 
 router.route('/:id').delete(async (req, res) => {
   const board = await boardsService.deleteBoard(req.params.id);
-  res.json(board);
+  res.status(204).json(board);
 });
 
 module.exports = router;
