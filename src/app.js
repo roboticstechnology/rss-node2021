@@ -4,9 +4,12 @@ const path = require('path');
 const YAML = require('yamljs');
 const userRouter = require('./resources/users/user.router');
 const boardRouter = require('./resources/boards/board.router');
+const taskRouter = require('./resources/tasks/task.router');
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
+
+//console.log(import.meta.url);
 
 app.use(express.json());
 
@@ -21,9 +24,8 @@ app.use('/', (req, res, next) => {
 });
 
 app.use('/users', userRouter);
- app.use('/boards', boardRouter);
-// app.use('/tasks', tasksRouter);
-// app.use('/login', loginRouter);
-
+app.use('/boards', boardRouter);
+app.use('/boards/:boardId/tasks', taskRouter);
+// app.use(errorHandler);
 
 module.exports = app;

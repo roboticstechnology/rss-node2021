@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-const Column = require('../Columns/colum.model');
+const Column = require('../columns/colum.model');
 
 class Board {
   constructor ({
@@ -16,8 +16,8 @@ class Board {
   }
 
   static toResponse (board) {
-    const { title, columns } = board;
-    return { title, columns };
+    const { id, title, columns } = board;
+    return { id, title, columns };
   }
 }
 
